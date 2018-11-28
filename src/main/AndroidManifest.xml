@@ -3,7 +3,7 @@
           package="as.verify.verifypayments">
 
     <application>
-        <activity android:name=".StartScreen">
+        <activity android:name=".ModalScreen">
         </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

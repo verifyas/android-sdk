@@ -8,16 +8,16 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.start_screen.*
 
-class StartScreen : AppCompatActivity() {
+class ModalScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.start_screen)
 
-        val link = Uri.parse("https://webview.verifypayments.dev")
+        val link = Uri.parse("https://js.stgverifypayments.com/webview/index.html")
             .buildUpon()
-            .appendQueryParameter("publicKey", "123")
-            .appendQueryParameter("sessionId", "123")
+            .appendQueryParameter("publicKey", "pk_test_QzDNuDfbzX3BcA96Wi33UcEWexRX3jPT")
+            .appendQueryParameter("sessionId", "ses_lRtstoNFzm8M")
             .build()
 
         val webSettings = webview.settings
