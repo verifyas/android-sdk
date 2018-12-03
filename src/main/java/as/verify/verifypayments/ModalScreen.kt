@@ -3,6 +3,8 @@ package `as`.verify.verifypayments
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -16,17 +18,26 @@ class ModalScreen : AppCompatActivity() {
 
         val link = Uri.parse("https://js.stgverifypayments.com/webview/index.html")
             .buildUpon()
-            .appendQueryParameter("publicKey", "pk_test_QzDNuDfbzX3BcA96Wi33UcEWexRX3jPT")
-            .appendQueryParameter("sessionId", "ses_lRtstoNFzm8M")
+            .appendQueryParameter("publicKey", intent.getStringExtra("publicKey"))
+            .appendQueryParameter("sessionId", intent.getStringExtra("sessionId"))
             .build()
-
+        Log.v("publicKey", intent.getStringExtra("publicKey"))
+        Log.v("sessionId", intent.getStringExtra("sessionId") )
         val webSettings = webview.settings
         webSettings.javaScriptEnabled = true
         webSettings.domStorageEnabled = true
         webSettings.cacheMode = WebSettings.LOAD_NO_CACHE
         WebView.setWebContentsDebuggingEnabled(true);
-        webview.webViewClient = WebViewClient()
+
+
+        webview.webViewClient = customWebViewClient(progressBar)
         webview.loadUrl(link.toString())
     }
 
+}
+
+class customWebViewClient(val loadingIndicator: View): WebViewClient() {
+    override fun onPageFinished(view: WebView, url: String) {
+        loadingIndicator.setVisibility(View.GONE)
+    }
 }
