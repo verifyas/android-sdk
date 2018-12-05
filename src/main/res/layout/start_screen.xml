@@ -5,11 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartScreen">
-        <TextView
+    tools:context=".ModalScreen">
+        <WebView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Our payment widget"
-            />
+            android:id="@+id/webview">
 
+        </WebView>
 </android.support.constraint.ConstraintLayout>
