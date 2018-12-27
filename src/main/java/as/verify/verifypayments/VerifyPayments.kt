@@ -5,7 +5,7 @@ import android.content.Intent
 import org.json.JSONObject
 import java.io.Serializable
 
-class VerifyPayments(val context: Context, val sessionId: String, val publicKey: String, val onComplete:((JSONObject)->Unit)? = null , val onClose: (()->Void)? = null) : Serializable{
+class VerifyPayments(val context: Context, val sessionId: String, val publicKey: String, val onComplete:((JSONObject)->Unit)? = null , val onClose: (()->Void)? = null, val nextScreen: Intent) {
     fun show() {
         val intent = Intent(context, ModalScreen::class.java)
         val reference = PaymentsHandler.addPayment(this)

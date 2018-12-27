@@ -61,5 +61,6 @@ class customJavascriptInterface(private val mContext: Context, private val payme
     @JavascriptInterface
     fun onClose() {
         payment.onClose?.invoke()
+        mContext.startActivity(payment.nextScreen)
     }
 }
