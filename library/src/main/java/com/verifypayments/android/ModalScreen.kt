@@ -1,9 +1,9 @@
-package `as`.verify.verifypayments
+package com.verifypayments.android
 
 import android.content.Context
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.webkit.JavascriptInterface
@@ -12,7 +12,6 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.start_screen.*
 import org.json.JSONObject
-import java.io.Serializable
 
 class ModalScreen : AppCompatActivity() {
     var payment : VerifyPayments? = null

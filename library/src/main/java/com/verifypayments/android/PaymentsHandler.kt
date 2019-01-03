@@ -1,4 +1,4 @@
-package `as`.verify.verifypayments
+package com.verifypayments.android
 
 class PaymentsHandler() {
     companion object {
