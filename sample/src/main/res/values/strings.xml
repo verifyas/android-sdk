@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Verify Payments Sample</string>
+    <string name="launch_payment">Pay</string>
+    <string name="amount_hint">Amount</string>
+    <string name="amount_default">10</string>
+    <string name="description_hint">Description</string>
+    <string name="description_default">Test Payment</string>
+    <string name="result_ok">Payment is completed. Status: %s, id: %s</string>
+    <string name="result_canceled">Payment is canceled</string>
 </resources>
