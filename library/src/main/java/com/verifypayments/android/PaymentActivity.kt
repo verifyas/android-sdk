@@ -18,8 +18,7 @@ import com.verifypayments.android.PaymentActivity.Companion.EXTRA_RESULT_STATUS
 import kotlinx.android.synthetic.main.activity_payment.*
 import java.util.regex.Pattern
 
-
-class PaymentActivity : AppCompatActivity() {
+open class PaymentActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_PUBLIC_KEY = "publicKey"
@@ -28,20 +27,23 @@ class PaymentActivity : AppCompatActivity() {
         const val EXTRA_RESULT_ID = "id"
         const val EXTRA_RESULT_STATUS = "status"
 
-        fun startForResult(activity: Activity, publicKey: String, sessionId: String, token: String?, requestCode: Int) {
-            val intent = buildIntent(activity, publicKey, sessionId, token)
+        fun startForResult(activity: Activity, publicKey: String, sessionId: String, token: String?,
+                           dialogStyle: Boolean, requestCode: Int) {
+            val intent = buildIntent(activity, publicKey, sessionId, token, dialogStyle)
             activity.startActivityForResult(intent, requestCode)
         }
 
-        fun startForResult(fragment: Fragment, publicKey: String, sessionId: String, token: String?, requestCode: Int) {
+        fun startForResult(fragment: Fragment, publicKey: String, sessionId: String, token: String?,
+                           dialogStyle: Boolean, requestCode: Int) {
             val activity = fragment.activity
                     ?: throw IllegalStateException("Fragment is detached from activity")
-            val intent = buildIntent(activity, publicKey, sessionId, token)
+            val intent = buildIntent(activity, publicKey, sessionId, token, dialogStyle)
             fragment.startActivityForResult(intent, requestCode)
         }
 
-        private fun buildIntent(context: Context, publicKey: String, sessionId: String, token: String?): Intent {
-            return Intent(context, PaymentActivity::class.java)
+        private fun buildIntent(context: Context, publicKey: String, sessionId: String, token: String?, dialogStyle: Boolean): Intent {
+            val activityClass = if (dialogStyle) DialogLikePaymentActivity::class.java else PaymentActivity::class.java
+            return Intent(context, activityClass)
                     .putExtra(EXTRA_PUBLIC_KEY, publicKey)
                     .putExtra(EXTRA_SESSION_ID, sessionId)
                     .putExtra(EXTRA_TOKEN, token)
@@ -50,11 +52,14 @@ class PaymentActivity : AppCompatActivity() {
 
     override fun onCreate(state: Bundle?) {
         super.onCreate(state)
-        setContentView(R.layout.activity_payment)
-
+        setContentView()
         setupWebView()
         val link = buildUri()
         webView.loadUrl(link.toString())
+    }
+
+    protected open fun setContentView() {
+        setContentView(R.layout.activity_payment)
     }
 
     @SuppressLint("SetJavaScriptEnabled")

@@ -51,7 +51,7 @@ class SamplePaymentActivity : AppCompatActivity() {
     }
 
     private fun onSessionFetched(session: Session) {
-        PaymentActivity.startForResult(this, PUBLIC_KEY, session.id, null, PAY_REQUEST_CODE)
+        PaymentActivity.startForResult(this, PUBLIC_KEY, session.id, null, true, PAY_REQUEST_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
