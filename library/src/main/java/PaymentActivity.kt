@@ -1,4 +1,4 @@
-package com.verifypayments.android
+package  com.verifypayments.android
 
 import android.annotation.SuppressLint
 import android.app.Activity

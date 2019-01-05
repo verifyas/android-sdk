@@ -6,10 +6,10 @@
 
     <application>
         <activity
-            android:name=".PaymentActivity"
+            android:name="PaymentActivity"
             android:label="@string/title" />
         <activity
-            android:name=".DialogLikePaymentActivity"
+            android:name="DialogLikePaymentActivity"
             android:theme="@style/DialogLikeTheme" />
     </application>
 </manifest>

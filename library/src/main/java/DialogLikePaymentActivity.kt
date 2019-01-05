@@ -1,4 +1,4 @@
-package com.verifypayments.android
+package  com.verifypayments.android
 
 class DialogLikePaymentActivity : PaymentActivity() {
 
