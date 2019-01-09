@@ -1,5 +1,6 @@
 *.iml
 local.properties
+publish.sh
 
 .idea
 .gradle

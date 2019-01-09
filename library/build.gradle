@@ -1,6 +1,16 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.9'
+    }
+}
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 28
@@ -25,4 +35,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+publish {
+    userOrg = 'pavel-gabriel'
+    repoName= 'verifypayments'
+    groupId = 'com.verifypayments'
+    artifactId = 'android-sdk'
+    publishVersion = '0.1'
+    desc = 'Verify Payments is an embeddable payment form for desktop and mobile devices. It works within your site — customers can pay instantly, without being redirected away to complete the transaction.'
+    website = 'https://verifypayments.com/'
 }
