@@ -75,7 +75,7 @@ open class PaymentActivity : AppCompatActivity() {
     }
 
     private fun buildUri(): Uri {
-        val builder = Uri.parse("https://js.stgverifypayments.com/webview/index.html")
+        val builder = Uri.parse("https://js.verifypayments.com/webview/index.html")
                 .buildUpon()
                 .appendQueryParameter("publicKey", getRequiredExtra(EXTRA_PUBLIC_KEY))
                 .appendQueryParameter("sessionId", getRequiredExtra(EXTRA_SESSION_ID))
